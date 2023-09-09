@@ -1,0 +1,3 @@
+eksctl create cluster --name india \
+--region us-east-2 \
+--node-type t2.small

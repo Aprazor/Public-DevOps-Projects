@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: colors-service
+  labels:
+    app: colors
+spec:
+  selector:
+    app: colors
+
+  ports:
+    - port: 8080
+      targetPort: 8080
+
+  type: LoadBalancer
+

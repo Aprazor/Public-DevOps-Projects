@@ -1,0 +1,18 @@
+
+
+---
+- hosts: ansible
+
+  tasks:
+  - name: create docker image
+    command: docker build -t colors:v2 .
+    args:
+     chdir: /opt/docker
+
+
+  - name: create tag to push image onto docker
+    command: docker tag colors:v2 aprazors/colors:latest
+
+  - name: docker image push
+    command: docker push aprazors/colors:latest
+

@@ -1,0 +1,17 @@
+
+---
+- hosts: kubernetes
+  #become: true
+  user: root
+
+  tasks:
+  - name: deployment of app
+    command: kubectl apply -f deployment.yaml
+      #command: kubectl apply -f /root/deployment.yaml
+
+  - name: deployment of app-service file
+    command: kubectl apply -f service.yaml
+    # command: kubectl apply -f /root/service.yaml
+
+  - name: update deployment to latest pods with image updated to dockHub
+    command: kubectl rollout restart deployment.apps/colors-app

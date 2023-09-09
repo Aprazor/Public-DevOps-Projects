@@ -1,0 +1,19 @@
+
+---
+- hosts: dockerhost
+
+  tasks:
+    - name: stop existing container
+      command: docker stop colors
+      ignore_errors: yes
+
+    - name: docker remove container
+      command: docker rm colors
+      ignore_errors: yes
+
+    - name: delete existing image
+      command: docker rmi aprazors/colors:latest -f
+      ignore_errors: yes
+
+    - name: create container
+      command: docker run -d --name colors -p 8082:8080 aprazors/colors:latest
